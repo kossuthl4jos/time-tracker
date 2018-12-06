@@ -1,0 +1,36 @@
+body {
+  background: linear-gradient(#f0ffff, white);
+}
+
+
+.live-color-box[data-v-c2d55ebe] {
+  width: 40px;
+  height: 40px;
+  margin-top: 40px;
+  background: black;
+}
+.dead-color-box[data-v-c2d55ebe] {
+  width: 40px;
+  height: 40px;
+  margin-top: 40px;
+  background: blue;
+}
+.modal-card-foot[data-v-c2d55ebe] {
+  justify-content: flex-end;
+}
+.section[data-v-c2d55ebe] {
+  text-align: center;
+}
+.section h1[data-v-c2d55ebe] {
+  height: 80px;
+  width: 100%;
+  line-height: 80px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.section h1 a[data-v-c2d55ebe]:hover {
+  color: orange;
+}
+
+
+/*# sourceMappingURL=app.css.map*/
