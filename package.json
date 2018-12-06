@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "config": {
-    "default_public_path": "/scaffolding/"
+    "default_public_path": "/"
   },
   "scripts": {
     "bundle": "webpack --progress --hide-modules --config build/webpack.config",
