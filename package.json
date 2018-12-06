@@ -24,7 +24,8 @@
     "express": "^4.16.3",
     "express-history-api-fallback": "^2.2.1",
     "express-http-proxy": "^1.2.0",
-    "express-static": "^1.2.4"
+    "express-static": "^1.2.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^8.3.0",
@@ -66,12 +67,12 @@
     "sinon": "^4.5.0",
     "sinon-chai": "^3.0.0",
     "url-loader": "^1.0.1",
-    "vue": "^2.5.16",
+    "vue": "^2.5.17",
     "vue-focus-lock": "^1.0.5",
     "vue-i18n": "^7.6.0",
-    "vue-loader": "^15.0.1",
+    "vue-loader": "^15.4.2",
     "vue-router": "^3.0.1",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.5.17",
     "webpack": "^4.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-cli": "^2.0.15",

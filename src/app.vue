@@ -11,13 +11,17 @@
         <div class="field">
           <label class="label">Name n' hours</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Please add your name">
+            <input
+              v-model="itemToSave.name"
+              class="input"
+              type="text"
+              placeholder="Please add your name">
           </div>
         </div>
 
         <div class="field has-addons">
           <p class="control">
-            <input class="input" type="text" placeholder="Hours spent">
+            <input v-model="itemToSave.hoursSpent" class="input" type="text" placeholder="Hours spent">
           </p>
           <p class="control">
             <a class="button is-static">
@@ -29,48 +33,50 @@
         <div class="field">
           <label class="label">Description of the problem</label>
           <div class="control">
-            <textarea class="textarea" placeholder="Textarea"></textarea>
+            <textarea v-model="itemToSave.description" class="textarea" placeholder="Textarea"></textarea>
           </div>
         </div>
 
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-link">Submit</button>
-          </div>
-          <div class="control">
-            <button class="button is-text">Cancel</button>
+            <button @click="saveItem" class="button is-link">Submit</button>
           </div>
         </div>
       </div>
 
       <div class="column"></div>
     </div>
+
+    <the-items-submitted v-if="hasSavedItems()"></the-items-submitted>
+
   </div>
 </template>
 
 <script>
+import TheItemsSubmitted from 'src/components/the-items-submitted.vue';
+
 export default {
   data() {
     return {
       state: this.$store.state,
-      lastFocus: null,
-      publicPath: process.env.PUBLIC_PATH,
-      gridFirst: [
-        false, false, false
-      ],
-      gridSecond: [
-        false, true, false
-      ]
+      itemToSave: {
+        name: '',
+        hoursSpent: 0,
+        description: ''
+      }
     };
   },
   methods: {
+    hasSavedItems() { return this.$store.getters.hasSavedItems(); },
+    saveItem() { this.$store.mutations.saveItem(this.$data.itemToSave); console.log(this.hasSavedItems()); },
     incrementCounter() { this.$store.mutations.incrementCounter(); },
     dismissMessage() { this.$store.mutations.dismissMessage(); },
     toggleLanguage() {
       this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en';
     },
     showJoke() { this.$store.actions.loadJoke(); }
-  }
+  },
+  components: { TheItemsSubmitted }
 };
 </script>
 
