@@ -1,0 +1,5 @@
+# Dist folder
+dist/*
+
+# Node modules
+node_modules/*
