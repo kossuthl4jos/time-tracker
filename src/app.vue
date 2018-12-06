@@ -27,17 +27,6 @@
         </div>
 
         <div class="field">
-          <label class="label">Time spent on</label>
-          <div class="control">
-             <span class="select">
-              <select>
-                <option>IE</option>
-              </select>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
           <label class="label">Description of the problem</label>
           <div class="control">
             <textarea class="textarea" placeholder="Textarea"></textarea>
