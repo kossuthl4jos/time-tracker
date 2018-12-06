@@ -39,13 +39,15 @@
 
         <div class="field is-grouped">
           <div class="control">
-            <button @click="saveItem" class="button is-link">Submit</button>
+            <button @click="saveItem" class="button is-info">Submit</button>
           </div>
         </div>
       </div>
 
       <div class="column"></div>
     </div>
+
+    <hr />
 
     <the-items-submitted v-if="hasSavedItems()"></the-items-submitted>
 
