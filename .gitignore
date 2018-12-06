@@ -2,7 +2,7 @@
 node_modules
 
 # Distribution
-# dist
+dist
 
 # Logs
 logs
