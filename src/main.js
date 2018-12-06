@@ -3,11 +3,12 @@ import 'src/app.less';
 
 import 'babel-polyfill';
 import Vue from 'vue';
+import App from './app.vue';
 import vueSetup from './vue-setup';
 
 const app = {
   el: '#app',
-  render: h => h('router-view')
+  render: h => h(App)
 };
 new Vue(Object.assign(app, vueSetup));
 
