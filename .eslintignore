@@ -1,5 +1,14 @@
 # Dist folder
 dist/*
 
+# Coverage report
+coverage/*
+
 # Node modules
 node_modules/*
+
+#Recorded item componenet
+src/components/the-recorded-items.vue
+
+#getters
+src/store/getters/total-number-of-hours-spent.js

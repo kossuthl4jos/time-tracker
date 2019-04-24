@@ -1,0 +1,29 @@
+// Import initial variables and helper functions first
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+// Change any variable you find on Bulma's site
+$blue: #0fa3e7;
+$black-ter: #252525;
+$green: #64d328;
+$grey-dark: #505050;
+$orange: #ffb83f;
+$white-bis: #fdfdfd;
+$white-ter: #f8f8f8;
+$red: #ff4b44;
+
+$size-medium: $size-4;
+$size-large: $size-2;
+
+$primary: $blue;
+$info: $green;
+$warning: $orange;
+
+$box-background-color: $white-ter;
+$footer-background-color: none;
+
+// Let it derive the remaining variables and apply the rules
+@import '~bulma/sass/utilities/derived-variables';
+
+// Finally apply the rules
+@import '~bulma';

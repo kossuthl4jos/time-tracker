@@ -1,0 +1,73 @@
+parser: vue-eslint-parser
+parserOptions:
+  parser: babel-eslint
+  sourceType: module
+extends:
+- plugin:vue/recommended
+- eslint:recommended
+plugins:
+- vue
+overrides:
+- files:
+  - "*.config.js"
+  env:
+    node: true
+rules:
+  quotes:
+  - error
+  - single
+  semi:
+  - error
+  - always
+  space-before-function-paren:
+  - error
+  - anonymous: never
+    named: never
+    asyncArrow: always
+  vue/html-closing-bracket-newline: error
+  vue/html-closing-bracket-spacing: error
+  vue/max-attributes-per-line:
+  - 2
+  - singleline: 3
+    multiline:
+      max: 1
+      allowFirstLine: false
+  vue/prop-name-casing: error
+  brace-style:
+  - warn
+  - stroustrup
+  - allowSingleLine: true
+  indent:
+  - warn
+  - tab
+  - MemberExpression: 2
+    CallExpression:
+      arguments: 2
+  max-len:
+  - warn
+  - 140
+  - 2
+  - ignoreComments: true
+  no-console:
+  - warn
+  - allow:
+    - warn
+    - error
+  no-unused-vars:
+  - warn
+  - argsIgnorePattern: "^_"
+  key-spacing:
+  - warn
+  - mode: strict
+  comma-spacing: warn
+  object-curly-spacing:
+  - warn
+  - always
+  operator-linebreak:
+  - warn
+  - after
+  prefer-const: warn
+  vue/html-indent:
+  - warn
+  - tab
+  no-path-concat: 'off'
