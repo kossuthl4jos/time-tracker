@@ -1,3 +1,3 @@
 export function numberOfDays(state, { totalNumberOfHoursSpent }) {
-	return Math.floor(totalNumberOfHoursSpent / 24);
+  return Math.floor(totalNumberOfHoursSpent / 24);
 }
