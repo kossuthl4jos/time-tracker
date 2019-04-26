@@ -4,12 +4,12 @@
 			<div class="column is-one-third" />
 			<div class="column">
 				<article
-				v-for="item in listOfItemsToDisplay"
-				:key="item.id"
-				class="message is-link">
+					v-for="item in listOfItemsToDisplay"
+					:key="item.id"
+					class="message is-link">
 					<div class="message-header">
 						<p>{{ item.name }} spent... {{ item.hours }} hour(s) </p>
-						<button class="delete" aria-label="delete" @click="launchDeleteProcess(item)"></button>
+						<button class="delete" aria-label="delete" @click="launchDeleteProcess(item)" />
 					</div>
 					<div class="message-body">
 						{{ item.description }}
@@ -17,8 +17,7 @@
 					<the-delete-modal
 						v-if="isDeleting"
 						:item="selectedItem"
-						@cancelDelete="cancelDeleteProcess"
-					/>
+						@cancelDelete="cancelDeleteProcess" />
 				</article>
 			</div>
 			<div class="column is-one-third" />
@@ -28,7 +27,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 import TheDeleteModal from 'src/components/the-delete-modal';
 
 export default {
@@ -43,7 +42,6 @@ export default {
 		...mapState(['listOfItemsToDisplay'])
 	},
 	methods: {
-		...mapActions(['retreivePosts']),
 		launchDeleteProcess(item) {
 			this.isDeleting = true;
 			this.selectedItem = item;
