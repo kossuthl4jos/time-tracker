@@ -9,25 +9,32 @@
     "default_public_path": "/"
   },
   "scripts": {
-    "bundle": "webpack --progress --hide-modules --config build/webpack.config",
+    "bundle": "rimraf public && webpack --progress --hide-modules --config build/webpack.config",
     "dev": "webpack-dev-server --host 0.0.0.0 --disable-host-check --mode development --config build/webpack.config",
     "build": "cross-env NODE_ENV=production npm run bundle -- --mode production",
     "analyze": "cross-env ANALYZE=true npm run build",
     "prod": "cross-env NODE_ENV=production node server",
-    "test": "npm run unit",
-    "unit": "cross-env NODE_ENV=test karma start karma.config",
-    "unit:watch": "npm run unit -- --no-single-run"
+    "test": "npm run lint && npm run unit -- --coverage --verbose",
+    "lint": "eslint \"@(src|test|build)/**/*.@(js|vue)\"",
+    "unit": "cross-env NODE_ENV=test jest",
+    "unit:watch": "npm run unit -- --watch"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.17",
-    "compression": "^1.7.1",
-    "cross-env": "^5.1.4",
+    "@fortawesome/fontawesome-free": "^5.4.1",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "compression": "^1.7.3",
+    "cross-env": "^5.1.6",
     "express": "^4.16.3",
     "express-history-api-fallback": "^2.2.1",
     "express-http-proxy": "^1.2.0",
-    "express-static": "^1.2.4",
+    "jquery": "^3.3.1",
+    "moment": "^2.23.0",
+    "odometer": "^0.4.8",
+    "rimraf": "^2.6.2",
+    "tap": "^12.0.1",
     "uuid": "^3.3.2",
-    "vuex": "^3.1.0"
+    "uuid-validate": "0.0.3",
+    "vue-odometer": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",
