@@ -18,7 +18,7 @@
 									</a>
 								</span>
 								<span class="navbar-item">
-									<a class="button is-primary is-inverted" href="https://git.topdesk.com/" target="_blank">
+									<a class="button is-primary is-inverted" href="https://git.com/" target="_blank">
 										<span class="icon">
 											<i class="fab fa-gitlab" />
 										</span>
