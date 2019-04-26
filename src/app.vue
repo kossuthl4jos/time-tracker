@@ -51,8 +51,6 @@
 			<div class="column" />
 		</div>
 
-		<hr />
-
 		<the-items-submitted v-if="hasSavedItems()" />
 
 	</div>

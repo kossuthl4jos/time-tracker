@@ -4,13 +4,13 @@ import setup from 'src/vue-setup';
 import TheMessage from './the-message';
 
 describe('the-message.vue', () => {
-	test('does not show popup by default', async () => {
+	it('does not show popup by default', async () => {
 		const vm = mount();
 		expect(vm.$refs.modalMessage).toBeFalsy();
 	});
 
 	// Notice that we can pass in an ad-hoc created store instance
-	test('shows message in popup', async () => {
+	it('shows message in popup', async () => {
 		const store = Store();
 		store.state.message = 'Test message';
 		const vm = mount({ store });

@@ -1,6 +1,6 @@
 
-import { storePost } from './store-post';
-import Post from '../../schema/Post';
+import { storePost } from '../../../../src/store/mutations/store-post';
+import Post from '../../../../src/schema/Post';
 var validate = require('uuid-validate');
 
 describe('storePost', () => {
@@ -20,7 +20,7 @@ describe('storePost', () => {
 		state = { itemToSave };
 	});
 
-	test('saves a valid UUID', async () => {
+	it('saves a valid UUID', async () => {
 		storePost(state, testPost);
 		const UUID = state.itemToSave.id;
 		const isValidUUID = validate(UUID, 4);
@@ -28,7 +28,7 @@ describe('storePost', () => {
 	
 	});
 
-	test('saves details to store', async () => {
+	it('saves details to store', async () => {
 		storePost(state, testPost);
 		expect(state.itemToSave.description).toEqual('testDescription');
 		expect(state.itemToSave.name).toEqual('testName');
