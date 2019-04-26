@@ -9,6 +9,7 @@ node_modules/*
 
 #Recorded item componenet
 src/components/the-recorded-items.vue
+src/components/the-form.vue
 
 #getters
 src/store/getters/total-number-of-hours-spent.js

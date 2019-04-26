@@ -25,6 +25,9 @@ module.exports = merge(baseConfig, {
 	optimization: {
 		splitChunks: { chunks: 'all' }
 	},
+	node: {
+		fs: 'empty'
+	},
 	plugins: plugins.concat([
 		new webpack.HotModuleReplacementPlugin(),
 		// Allow client code to access publicPath via process.env.PUBLIC_PATH as a constant at build time
