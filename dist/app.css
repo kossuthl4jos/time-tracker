@@ -3,32 +3,32 @@ body {
 }
 
 
-.live-color-box[data-v-c2d55ebe] {
+.live-color-box[data-v-755f48a8] {
   width: 40px;
   height: 40px;
   margin-top: 40px;
   background: black;
 }
-.dead-color-box[data-v-c2d55ebe] {
+.dead-color-box[data-v-755f48a8] {
   width: 40px;
   height: 40px;
   margin-top: 40px;
   background: blue;
 }
-.modal-card-foot[data-v-c2d55ebe] {
+.modal-card-foot[data-v-755f48a8] {
   justify-content: flex-end;
 }
-.section[data-v-c2d55ebe] {
+.section[data-v-755f48a8] {
   text-align: center;
 }
-.section h1[data-v-c2d55ebe] {
+.section h1[data-v-755f48a8] {
   height: 80px;
   width: 100%;
   line-height: 80px;
   margin-bottom: 0px;
   cursor: pointer;
 }
-.section h1 a[data-v-c2d55ebe]:hover {
+.section h1 a[data-v-755f48a8]:hover {
   color: orange;
 }
 

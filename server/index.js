@@ -6,17 +6,17 @@ const setupApi = require('./setup-api');
 const app = express();
 
 const publicPath = process.env.PUBLIC_PATH || process.env.npm_package_config_default_public_path;
-console.log('Serving content from public path ' + publicPath);
+console.log(`Serving content from public path /my-vue-webpack/`);
 const root = path.resolve(__dirname, '../dist');
 
 setupApi(app);
-app.use((_, res, next) => {
-	res.header('Cache-Control', 'max-age=1');
+app.use((req, res, next) => {
+  res.header('Cache-Control', 'max-age=1');
 	next();
 });
 app.use(compression());
 app.use(publicPath, express.static(root));
 app.use(publicPath, fallback('index.html', { root }));
-app.use('^/$', (_, res) => { res.redirect(publicPath); });
+app.use('^/$', (req, res) => { res.redirect(publicPath); });
 
 app.listen(process.env.PORT || 3000);
