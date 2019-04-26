@@ -40,22 +40,22 @@ function Store({ gateway = _gateway } = {}) {
 
 	// Async / multi step changes
 	const actions = {
-		async saveItem({ commit, dispatch }, item) {
+		saveItem({ commit, dispatch }, item) {
 			if (!item.description || !item.name || !item.hours) {
 				alert('Please fill in the fields');
 				return;
 			}
 			commit('storePost', item);
-			const save = await gateway.saveData(state.itemToSave);
+			const save = gateway.saveData(state.itemToSave);
 			dispatch('retreivePosts');
 			return save;
 		},
-		async retreivePosts({ commit }) {
-			const loadedData = await gateway.loadData();
+		retreivePosts({ commit }) {
+			const loadedData = gateway.loadData();
 			commit('displaySortedPosts', loadedData);
 		},
-		async deleteItem({ dispatch }, itemId) {
-			const updatedData = await gateway.deleteItem(itemId);
+		deleteItem({ dispatch }, itemId) {
+			const updatedData = gateway.deleteItem(itemId);
 			dispatch('retreivePosts');
 			return updatedData;
 		}
