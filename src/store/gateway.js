@@ -17,7 +17,7 @@ function Gateway({ get } = axios) {
 		deleteItem(itemId) {
 			const currentItems = this.loadData();
 			const updatedItems = currentItems.filter(item => item.id !== itemId);
-			this.saveData(updatedItems);
+			localStorage.setItem('recordedItems', JSON.stringify(updatedItems));
 			return this.loadData();
 		}
 	};
