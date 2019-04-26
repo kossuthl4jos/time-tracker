@@ -1,4 +1,4 @@
-import TdIcon from './td-icon';
+import TdIcon from './';
 
 /* "Widgets" are just vue files that
 	- are independent of the application shared state

@@ -4,7 +4,7 @@ import 'src/app.less';
 import 'babel-polyfill';
 import Vue from 'vue';
 import App from './app.vue';
-import vueSetup from './vue-setup';
+import vueSetup from './vue-setup/index.js';
 
 const app = {
 	el: '#app',

@@ -10,5 +10,6 @@ const routes = [
 
 export default new VueRouter({
 	routes,
+	// eslint-disable-next-line no-undef
 	base: process.env.PUBLIC_PATH
 });
