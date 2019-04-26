@@ -6,7 +6,7 @@
 
 		<the-form />
 
-		<the-recorded-items/>
+		<the-recorded-items />
 		
 	</div>
 </template>
