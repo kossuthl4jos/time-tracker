@@ -1,121 +1,35 @@
 <template>
 	<div>
-		<div class="section">
-			<h1 class="title">Time tracker</h1>
-		</div>
+		<the-header />
 
-		<div class="columns">
-			<div class="column" />
+		<the-counter :hours-spent="totalNumberOfHoursSpent" />
 
-			<div class="column">
-				<div class="field">
-					<label class="label">Name n' hours</label>
-					<div class="control">
-						<input
-							v-model="itemToSave.name"
-							class="input"
-							type="text"
-							placeholder="Please add your name">
-					</div>
-				</div>
+		<the-form />
 
-				<div class="field has-addons">
-					<p class="control">
-						<input
-							v-model="itemToSave.hoursSpent"
-							class="input"
-							type="text"
-							placeholder="Hours spent">
-					</p>
-					<p class="control">
-						<a class="button is-static">
-							hour(s)
-						</a>
-					</p>
-				</div>
-
-				<div class="field">
-					<label class="label">Description of the problem</label>
-					<div class="control">
-						<textarea v-model="itemToSave.description" class="textarea" placeholder="Textarea" />
-					</div>
-				</div>
-
-				<div class="field is-grouped">
-					<div class="control">
-						<button class="button is-info" @click="saveItem">Submit</button>
-					</div>
-				</div>
-			</div>
-
-			<div class="column" />
-		</div>
-
-		<the-items-submitted v-if="hasSavedItems()" />
-
+		<the-recorded-items/>
+		
 	</div>
 </template>
 
 <script>
-import TheItemsSubmitted from 'src/components/the-items-submitted.vue';
+import { mapGetters } from 'vuex';
+
+import TheRecordedItems from './components/the-recorded-items';
+import TheCounter from './components/the-counter';
+import TheHeader from './components/the-header';
+import TheForm from './components/the-form';
 
 export default {
-	components: { TheItemsSubmitted },
-	data() {
-		return {
-			state: this.$store.state,
-			itemToSave: {
-				name: '',
-				hoursSpent: 0,
-				description: ''
-			}
-		};
-	},
-	methods: {
-		hasSavedItems() { return this.$store.getters.hasSavedItems(); },
-		saveItem() { this.$store.mutations.saveItem(this.$data.itemToSave); },
-		incrementCounter() { this.$store.mutations.incrementCounter(); },
-		dismissMessage() { this.$store.mutations.dismissMessage(); },
-		toggleLanguage() {
-			this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en';
-		},
-		showJoke() { this.$store.actions.loadJoke(); }
-	},
+	components: { TheRecordedItems, TheCounter, TheHeader, TheForm },
+	computed: {
+		...mapGetters(['totalNumberOfHoursSpent'])
+	}
 };
 </script>
 
-<style lang="less" scoped>
-.live-color-box{
-	width: 40px;
-	height: 40px;
-	margin-top: 40px;
-	background: black
+<style lang="scss" scoped>
+.section {
+  text-align: center;
 }
-
-.dead-color-box{
-	width: 40px;
-	height: 40px;
-	margin-top: 40px;
-	background: blue
-}
-
-.modal-card-foot {
-	justify-content: flex-end;
-}
-
-.section{
-	text-align: center;
-
-	h1 {
-		height: 80px;
-		width: 100%;
-		line-height: 80px;
-		margin-bottom: 0px;
-		cursor: pointer;
-	}
-
-	h1 a:hover {
-		color: orange;
-	}
-}
+.has-bg-img { background: url('./resources/sport.svg')center center; background-size:cover; }
 </style>

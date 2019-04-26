@@ -9,7 +9,7 @@
 								<span class="navbar-item">
 									<a
 										class="button is-primary is-inverted"
-										href="mailto:L.Kossuth@topdesk.com?Subject=Consider%20this!%20-%20feedback%20on%20tracker"
+										href="mailto:someone@hello.com?Subject=Consider%20this!%20-%20feedback%20on%20tracker"
 										target="_top">
 										<span class="icon">
 											<i class="fas fa-comment-dots" />
@@ -18,7 +18,7 @@
 									</a>
 								</span>
 								<span class="navbar-item">
-									<a class="button is-primary is-inverted" href="https://git.topdesk.com/LajosK/grieps-11" target="_blank">
+									<a class="button is-primary is-inverted" href="https://git.topdesk.com/" target="_blank">
 										<span class="icon">
 											<i class="fab fa-gitlab" />
 										</span>
