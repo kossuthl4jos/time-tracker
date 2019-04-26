@@ -17,7 +17,7 @@ function Store({ gateway = _gateway } = {}) {
 	const state = {
 		message: null,
 		itemToSave: { id: '', description: '', name: '', hours: '', creationDate: '' },
-		listOfItemsToDisplay: [],
+		listOfItemsToDisplay: gateway.loadData(),
 		totalHours: 0,
 		editMode: false
 	};
