@@ -1,7 +1,7 @@
 import { Store } from 'src/store';
-import Post from '../schema/Post';
-import { mount, findByHandle, clickByHandle } from '../../test/test-utils';
-import TheRecordedItems from './the-recorded-items';
+import Post from 'src/schema/Post';
+import { mount, findByHandle, clickByHandle } from 'test/test-utils';
+import TheRecordedItems from 'src/components/the-recorded-items';
 
 const testItemsToDisplay = [ Post({
 	id: 'testId', 

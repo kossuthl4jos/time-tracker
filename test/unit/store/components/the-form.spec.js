@@ -1,5 +1,5 @@
-import { mount,  findByHandle } from '../../test/test-utils';
-import TheForm from './the-form';
+import { mount,  findByHandle } from 'test/test-utils';
+import TheForm from 'src/components/the-form';
 import Vuex from 'vuex';
 
 
