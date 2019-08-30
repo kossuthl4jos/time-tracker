@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="hero is-medium is-link">
+		<section class="hero is-small is-link">
 			<div class="hero-head">
 				<nav class="navbar">
 					<div class="container">
@@ -18,7 +18,7 @@
 									</a>
 								</span>
 								<span class="navbar-item">
-									<a class="button is-primary is-inverted" href="https://git.com/" target="_blank">
+									<a class="button is-primary is-inverted" href="https://github.com/kossuthl4jos/first-public" target="_blank">
 										<span class="icon">
 											<i class="fab fa-gitlab" />
 										</span>
@@ -34,7 +34,7 @@
 			<div class="hero-body">
 				<h1 class="title has-text-centered">
 					It's time to track...
-					<i class="fab fa-internet-explorer fa-xl" alt="Logo" />
+					<i class="fas fa-clock" alt="Logo" />
 				</h1>
 			</div>
 		</section>
