@@ -1,10 +1,6 @@
 <template>
-	<div class="columns">
-		<div class="column is-one-third" />
-
-		<div
-			class="column">
-			<div class="field has-addons">
+	<div class="section form-grid-container">
+			<div class="field has-addons name-hour-item">
 				<p class="control is-primary">
 					<a
 						class="button is-static is-primary">
@@ -42,7 +38,7 @@
 			<b-collapse
 				:open="isEditMode"
 				handle="detailsCollapseElement"
-				class="field">
+				class="field description-item">
 				<div class="control">
 					<textarea
 						v-model="item.description"
@@ -54,18 +50,16 @@
 				</div>
 			</b-collapse>
 
-			<div class="field">
-				<div class="control">
-					<button
-						ref="submitButton"
-						handle="submitButton"
-						class="button is-fullwidth is-warning has-text-weight-bold"
-						@click="storeItem"> Submit </button>
-				</div>
+		<div class="field button-item">
+			<div class="control">
+				<button
+					ref="submitButton"
+					handle="submitButton"
+					class="button is-fullwidth is-warning has-text-weight-bold"
+					@click="storeItem"> Submit </button>
 			</div>
 		</div>
 
-		<div class="column is-one-third" />
 	</div>
 </template>
 
@@ -101,4 +95,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	.form-grid-container {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		justify-content: center;
+	}
+	.name-hour-item {
+		grid-column: 2;
+		grid-row: 1;
+	}
+	.description-item {
+		grid-column: 2;
+		grid-row: 2;
+	}
+	.button-item {
+		grid-column: 2;
+		grid-row: 3;
+	}
 </style>
