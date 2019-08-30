@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueFocusLock from 'vue-focus-lock';
-import CustomWidgets from '../widgets';
 
 // Setup Font Awesome
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -15,10 +14,9 @@ config.observeMutations = false;
 
 // But reduce bundle size we cherry-pick components from Buefy
 import Modal from 'buefy/dist/components/modal';
+import BCollapse from 'buefy/dist/components/collapse';
 
 // Register 3rd party widgets
 Vue.use(Modal);
+Vue.use(BCollapse);
 Vue.component('vue-focus-lock', VueFocusLock); // The VueFocusLock.name would be "Lock" which conflicts with naming recommendations
-
-// Register any custom made widgets to make them globally available in this app
-Vue.use(CustomWidgets);
