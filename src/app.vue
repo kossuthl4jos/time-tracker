@@ -28,8 +28,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.section {
-  text-align: center;
-}
-.has-bg-img { background: url('./resources/sport.svg')center center; background-size:cover; }
+
 </style>
