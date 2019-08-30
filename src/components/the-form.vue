@@ -59,8 +59,8 @@
 					<button
 						ref="submitButton"
 						handle="submitButton"
-						class="button is-fullwidth is-warning"
-						@click="storeItem"> <b>Submit</b> </button>
+						class="button is-fullwidth is-warning has-text-weight-bold"
+						@click="storeItem"> Submit </button>
 				</div>
 			</div>
 		</div>
