@@ -3,10 +3,5 @@
     "browser": true,
     "jest": true,
     "node": true
-  },
-  "globals": {
-    "chai": true,
-    "expect": true,
-    "sinon": true
   }
 }
