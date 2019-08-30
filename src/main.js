@@ -1,10 +1,12 @@
 import 'bulma/css/bulma.css';
-import 'src/app.less';
+// import 'src/app.less';
+import 'buefy/dist/buefy.css';
+import './style/app.scss';
 
 import 'babel-polyfill';
 import Vue from 'vue';
 import App from './app.vue';
-import vueSetup from './vue-setup/index.js';
+import vueSetup from './vue-setup';
 import Buefy from 'buefy';
 
 const app = {
