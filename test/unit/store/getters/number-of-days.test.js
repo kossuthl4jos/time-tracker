@@ -1,4 +1,4 @@
-import { numberOfDays } from '../../../../src/store/getters/number-of-days';
+import { numberOfDays } from 'src/store/getters/number-of-days';
 
 describe('numberOfDays', () => {
 	it('returns zero when amount is less than a day', async () => {

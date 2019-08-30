@@ -1,4 +1,4 @@
-import { numberOfHours } from '../../../../src/store/getters/number-of-hours';
+import { numberOfHours } from 'src/store/getters/number-of-hours';
 
 describe('numberOfHours', () => {
 	it('returns total hours when amount is less than a day', async () => {

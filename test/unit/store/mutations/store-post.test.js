@@ -1,7 +1,7 @@
 
-import { storePost } from '../../../../src/store/mutations/store-post';
-import Post from '../../../../src/schema/Post';
-var validate = require('uuid-validate');
+import { storePost } from 'src/store/mutations/store-post';
+import Post from 'src/schema/Post';
+import validate from 'uuid-validate';
 
 describe('storePost', () => {
 	let itemToSave = {};

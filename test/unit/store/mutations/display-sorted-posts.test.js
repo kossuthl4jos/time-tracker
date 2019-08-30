@@ -1,6 +1,6 @@
 
-import { displaySortedPosts } from '../../../../src/store/mutations/display-sorted-posts';
-import Post from '../../../../src/schema/Post';
+import { displaySortedPosts } from 'src/store/mutations/display-sorted-posts';
+import Post from 'src/schema/Post';
 
 describe('storePost', () => {
 	const state = {};

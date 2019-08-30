@@ -1,5 +1,5 @@
 
-import { totalNumberOfHoursSpent } from '../../../../src/store/getters/total-number-of-hours-spent';
+import { totalNumberOfHoursSpent } from 'src/store/getters/total-number-of-hours-spent';
 
 describe('totalNumberOfHoursSpent', () => {
 	it('returns zero if there are no entries', async () => {
