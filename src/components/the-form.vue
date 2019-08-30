@@ -50,15 +50,13 @@
 				</div>
 			</b-collapse>
 
-		<div class="field button-item">
-			<div class="control">
+			<div class="button-item">
 				<button
 					ref="submitButton"
 					handle="submitButton"
-					class="button is-fullwidth is-warning has-text-weight-bold"
+					class="button button-item is-fullwidth is-warning has-text-weight-bold "
 					@click="storeItem"> Submit </button>
 			</div>
-		</div>
 
 	</div>
 </template>
