@@ -1,9 +1,7 @@
-import axios from 'axios';
-
 export default Gateway();
 export { Gateway };
 
-function Gateway({ get } = axios) {
+function Gateway() {
 	return {
 		loadData() {
 			return JSON.parse(localStorage.getItem('recordedItems')) || [];
