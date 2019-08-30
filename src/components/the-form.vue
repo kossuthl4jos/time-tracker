@@ -2,7 +2,8 @@
 	<div class="columns">
 		<div class="column is-one-third" />
 
-		<div class="column">
+		<div
+			class="column">
 			<div class="field has-addons">
 				<p class="control is-primary">
 					<a
@@ -13,11 +14,12 @@
 				<div class="control is-expanded">
 					<input
 						v-model="item.name"
+						handle="nameInputForm"
 						class="input"
 						type="text"
 						placeholder="Please add your name"
-						@focus="$store.commit('enableEditMode')"
-						@blur="$store.commit('disableEditMode')">
+						@focus="isEditMode = !isEditMode"
+						@blur="isEditMode = !isEditMode">
 				</div>
 
 				<p class="control is-primary">
@@ -28,29 +30,37 @@
 				<p class="control">
 					<input
 						v-model="item.hours"
+						handle="hoursSpentInputForm"
 						class="input"
 						type="text"
 						placeholder="Hours spent"
-						@focus="$store.commit('enableEditMode')"
-						@blur="$store.commit('disableEditMode')">
+						@focus="isEditMode = !isEditMode"
+						@blur="isEditMode = !isEditMode">
 				</p>
 			</div>
 
-			<b-collapse :open="editMode" class="field">
+			<b-collapse
+				:open="isEditMode"
+				handle="detailsCollapseElement"
+				class="field">
 				<div class="control">
 					<textarea
 						v-model="item.description"
+						handle="detailsInputForm"
 						class="textarea is-link"
 						placeholder="Please share the details"
-						@focus="$store.commit('enableEditMode')"
-						@blur="$store.commit('disableEditMode')" />
+						@focus="isEditMode = !isEditMode"
+						@blur="isEditMode = !isEditMode" />
 				</div>
 			</b-collapse>
 
-
 			<div class="field">
 				<div class="control">
-					<button ref="submitButton" class="button is-fullwidth is-warning" @click="storeItem"> <b>Submit</b> </button>
+					<button
+						ref="submitButton"
+						handle="submitButton"
+						class="button is-fullwidth is-warning"
+						@click="storeItem"> <b>Submit</b> </button>
 				</div>
 			</div>
 		</div>
@@ -60,13 +70,12 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
 	data() {
 		return {
-			lastFocus: null,
-			publicPath: process.env.PUBLIC_PATH,
+			isEditMode: false,
 			item: {
 				description: '',
 				name: '',
@@ -77,7 +86,6 @@ export default {
 	computed: {
 		...mapState(['editMode']),
 		...mapGetters(['totalNumberOfHoursSpent']),
-		...mapMutations(['enableEditMode', 'disableEditMode'])
 	},
 	methods: {
 		storeItem() {
@@ -93,7 +101,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.section {
-  text-align: center;
-}
 </style>

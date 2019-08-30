@@ -18,8 +18,14 @@
 				</div>
 			</section>
 			<footer class="modal-card-foot">
-				<button class="button is-danger" @click="finishDeleteProcess(item.id)">Let this entry go...</button>
-				<button class="button" @click="cancelDeleteProcess">WAIT, NO</button>
+				<button
+					handle="confirmModalButton"
+					class="button is-danger"
+					@click="finishDeleteProcess(item.id)">Let this entry go...</button>
+				<button
+					handle="rejectModalButton"
+					class="button"
+					@click="cancelDeleteProcess">WAIT, NO</button>
 			</footer>
 		</div>
 	</div>
