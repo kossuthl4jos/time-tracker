@@ -1,5 +1,4 @@
 import { Store } from 'src/store';
-import { Gateway } from 'src/gateway';
 
 describe('Store', () => {
 	it('is unit testable without gateway', async () => {
@@ -13,11 +12,7 @@ describe('Store', () => {
 
 	it('is integration testable with gateway', async () => {
 		const remoteCalls = [];
-		const get = url => {
-			remoteCalls.push(url);
-			return Promise.resolve({ data: { value: { joke: 'Remote joke' } } });
-		};
-		const store = Store({ gateway: Gateway({ get }) });
+		const store = Store();
 		await store.actions.loadJoke();
 		expect(remoteCalls.length).to.equal(1);
 		expect(remoteCalls[0]).to.include('/jokes/random');
