@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
 	data() {
@@ -78,7 +78,6 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(['editMode']),
 		...mapGetters(['totalNumberOfHoursSpent']),
 	},
 	methods: {
