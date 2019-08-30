@@ -17,7 +17,7 @@
 	</div>
 </template>
 
-<script type="text/babel">
+<script>
 import IOdometer from 'vue-odometer';
 import 'odometer/themes/odometer-theme-train-station.css';
 import 'odometer/themes/odometer-theme-car.css';
