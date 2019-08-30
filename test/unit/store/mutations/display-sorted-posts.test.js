@@ -2,7 +2,7 @@
 import { displaySortedPosts } from 'src/store/mutations/display-sorted-posts';
 import Post from 'src/schema/Post';
 
-describe('storePost', () => {
+describe('display-sorted-posts', () => {
 	const state = {};
 
 	const firstTestPost = Post({
@@ -12,7 +12,7 @@ describe('storePost', () => {
 		hours: '1',
 		creationDate: '1'
 	});
-	
+  
 	const secondTestPost = Post({
 		id: '',
 		description: 'secondTestDescription',
@@ -23,7 +23,7 @@ describe('storePost', () => {
 
 	const posts = [ firstTestPost, secondTestPost ];
 
-	it('store posts in descending order', async () => {
+	test('store posts in descending order', async () => {
 		displaySortedPosts(state, posts);
 		expect(state.listOfItemsToDisplay[0]).toEqual(secondTestPost);
 		expect(state.listOfItemsToDisplay[1]).toEqual(firstTestPost);

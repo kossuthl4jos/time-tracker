@@ -20,7 +20,7 @@ describe('storePost', () => {
 		state = { itemToSave };
 	});
 
-	it('saves a valid UUID', async () => {
+	test('saves a valid UUID', async () => {
 		storePost(state, testPost);
 		const UUID = state.itemToSave.id;
 		const isValidUUID = validate(UUID, 4);
@@ -28,7 +28,7 @@ describe('storePost', () => {
 	
 	});
 
-	it('saves details to store', async () => {
+	test('saves details to store', async () => {
 		storePost(state, testPost);
 		expect(state.itemToSave.description).toEqual('testDescription');
 		expect(state.itemToSave.name).toEqual('testName');
