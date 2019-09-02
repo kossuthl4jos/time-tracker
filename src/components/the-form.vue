@@ -49,13 +49,15 @@
 						@blur="isEditMode = !isEditMode" />
 				</div>
 			</b-collapse>
-
-			<div class="button-item">
+			<div
+				class="button-item">
 				<button
 					ref="submitButton"
 					handle="submitButton"
-					class="button button-item is-fullwidth is-warning has-text-weight-bold "
-					@click="storeItem"> Submit </button>
+					class="button is-fullwidth is-warning has-text-weight-bold "
+					@mousedown="storeItem" >
+					Submit
+				</button>
 			</div>
 
 	</div>
