@@ -44,12 +44,27 @@ export default {
 </script>
 
 <style lang="scss">
+	@media only screen and (max-width: 670px) {
+		.odometer {
+			font-size: 11.2vw;
+		}
+	}
+
 	.iOdometer {
 		margin: 0;
 	}
-	.odometer {
-		font-size: 75px;
+	@media only screen and (max-width: 670px) {
+		.odometer {
+			font-size: 11.2vw;
+		}
 	}
+
+	@media only screen and (min-width: 670px) {
+		.odometer {
+			font-size: 75px;
+		}
+	}
+
 	.odometer .odometer-inside .odometer-digit:first-child {
 		display: none;
 	}
@@ -59,24 +74,23 @@ export default {
 
 	.counter-grid-container {
 		display: grid;
-		grid-template-columns: auto auto auto auto;
 		justify-content: center;
 		column-gap: 100px;
 	}
 	.day-title-item {
-		grid-column: 2;
+		grid-column: 1;
 		grid-row: 1;
 	}
 	.hour-title-item {
-		grid-column: 3;
+		grid-column: 2;
 		grid-row: 1;
 	}
 	.day-item {
-		grid-column: 2;
+		grid-column: 1;
 		grid-row: 2;
 	}
 	.hour-item {
-		grid-column: 3;
+		grid-column: 2;
 		grid-row: 2;
 	}
 </style>
