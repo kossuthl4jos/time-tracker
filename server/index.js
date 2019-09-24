@@ -13,9 +13,14 @@ app.use((req, res, next) => {
   res.header('Cache-Control', 'max-age=1');
 	next();
 });
-app.use(compression());
+app.use(compression()); // attempts to compress response bodies
+
+
 app.use(publicPath, express.static(root));
 app.use(publicPath, fallback('index.html', { root }));
+
 app.use('^/$', (req, res) => { res.redirect(publicPath); });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000, () => {
+  console.log('eagerly listening on: ', process.env.PORT || 3000);
+});
