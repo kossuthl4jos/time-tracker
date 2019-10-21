@@ -3,20 +3,20 @@ import { saveItem } from 'src/store/actions/save-item';
 const item = Item({
 	description: 'description',
 	name: 'name',
-	hours:  'hours'
+	hours: 'hours'
 });
-
+const gateway = {
+	saveData: (itemToSave) => {
+		savedItems.push(itemToSave);
+		return savedItems;
+	}
+};
+const state = { itemToSave: item };
 let savedItems = [];
-
-const gateway = { saveData: (itemToSave) => {
-	savedItems.push(itemToSave);
-	return savedItems;
-}}
 let mockCommit = {};
 let mockDispatch = {};
-const state = { itemToSave: item };
 
-function Item({ description = '', name = '', hours = ''} = {}) {
+function Item({ description = '', name = '', hours = '' } = {}) {
 	return { description, name, hours };
 }
 
@@ -29,7 +29,7 @@ function dispatch(called, payload) {
 }
 
 beforeEach(() => {
-  savedItems = [];
+	savedItems = [];
 });
 
 describe('save-item', () => {
@@ -38,7 +38,7 @@ describe('save-item', () => {
 		saveItem({ item: Item({
 			description: undefined,
 			name: 'name',
-			hours:  'hours'
+			hours: 'hours'
 		}) });
 
 		expect(spy).toHaveBeenCalledWith('Please fill in the fields');
@@ -49,7 +49,7 @@ describe('save-item', () => {
 		saveItem({ item: Item({
 			description: 'description',
 			name: undefined,
-			hours:  'hours'
+			hours: 'hours'
 		}) });
 
 		expect(spy).toHaveBeenCalledWith('Please fill in the fields');
@@ -60,7 +60,7 @@ describe('save-item', () => {
 		saveItem({ item: Item({
 			description: 'description',
 			name: 'name',
-			hours:  undefined
+			hours: undefined
 		}) });
 
 		expect(spy).toHaveBeenCalledWith('Please fill in the fields');
@@ -86,7 +86,7 @@ describe('save-item', () => {
 		const newItem = Item({
 			description: 'newDescription',
 			name: 'newName',
-			hours:  'newHours'
+			hours: 'newHours'
 		});
 		state.itemToSave = newItem;
 
