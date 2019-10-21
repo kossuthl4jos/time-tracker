@@ -7,6 +7,9 @@ import { numberOfHours } from './getters/number-of-hours';
 import { storePost } from './mutations/store-post';
 import { displaySortedPosts } from './mutations/display-sorted-posts';
 
+import { retreivePosts } from './actions/retreive-posts';
+import { saveItem } from './actions/save-item';
+
 export { Store };
 
 function Store({ gateway = _gateway } = {}) {
@@ -30,20 +33,8 @@ function Store({ gateway = _gateway } = {}) {
 	};
 
 	const actions = {
-		saveItem({ commit, dispatch }, item) {
-			if (!item.description || !item.name || !item.hours) {
-				alert('Please fill in the fields');
-				return;
-			}
-			commit('storePost', item);
-			const save = gateway.saveData(state.itemToSave);
-			dispatch('retreivePosts');
-			return save;
-		},
-		retreivePosts({ commit }) {
-			const loadedData = gateway.loadData();
-			commit('displaySortedPosts', loadedData);
-		},
+		saveItem({ commit, dispatch }, item) { return saveItem({ commit, dispatch, state, gateway, item }); },
+		retreivePosts({ commit }) { return retreivePosts(commit, gateway); },
 		deleteItem({ dispatch }, itemId) {
 			const updatedData = gateway.deleteItem(itemId);
 			dispatch('retreivePosts');
