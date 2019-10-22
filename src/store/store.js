@@ -36,7 +36,7 @@ function Store({ gateway = _gateway } = {}) {
 	const actions = {
 		saveItem({ commit, dispatch }, item) { return saveItem({ commit, dispatch, state, gateway, item }); },
 		retreivePosts({ commit }) { return retreivePosts(commit, gateway); },
-		deleteItem({ dispatch }, itemId) { return deleteItem({ dispatch, gateway, itemId }) }
+		deleteItem({ dispatch }, itemId) { return deleteItem({ dispatch, gateway, itemId }); }
 	};
 
 	return { state, getters, mutations, actions };
