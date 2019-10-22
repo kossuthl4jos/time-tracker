@@ -1,10 +1,15 @@
 import { saveItem } from 'src/store/actions/save-item';
 
+function Item({ description = '', name = '', hours = '' } = {}) {
+	return { description, name, hours };
+}
+
 const item = Item({
 	description: 'description',
 	name: 'name',
 	hours: 'hours'
 });
+
 const gateway = {
 	saveData: (itemToSave) => {
 		savedItems.push(itemToSave);
@@ -15,10 +20,6 @@ const state = { itemToSave: item };
 let savedItems = [];
 let mockCommit = {};
 let mockDispatch = {};
-
-function Item({ description = '', name = '', hours = '' } = {}) {
-	return { description, name, hours };
-}
 
 function commit(called, payload) {
 	mockCommit = { called, payload };
