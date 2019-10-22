@@ -9,6 +9,7 @@ import { displaySortedPosts } from './mutations/display-sorted-posts';
 
 import { retreivePosts } from './actions/retreive-posts';
 import { saveItem } from './actions/save-item';
+import { deleteItem } from './actions/delete-item';
 
 export { Store };
 
@@ -35,11 +36,7 @@ function Store({ gateway = _gateway } = {}) {
 	const actions = {
 		saveItem({ commit, dispatch }, item) { return saveItem({ commit, dispatch, state, gateway, item }); },
 		retreivePosts({ commit }) { return retreivePosts(commit, gateway); },
-		deleteItem({ dispatch }, itemId) {
-			const updatedData = gateway.deleteItem(itemId);
-			dispatch('retreivePosts');
-			return updatedData;
-		}
+		deleteItem({ dispatch }, itemId) { return deleteItem({ dispatch, gateway, itemId }) }
 	};
 
 	return { state, getters, mutations, actions };
