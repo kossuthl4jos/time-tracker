@@ -52,7 +52,6 @@
 			<div
 				class="button-item">
 				<button
-					ref="submitButton"
 					handle="submitButton"
 					class="button is-fullwidth is-warning has-text-weight-bold "
 					@mousedown="storeItem" >
