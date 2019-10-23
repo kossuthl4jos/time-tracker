@@ -1,23 +1,14 @@
 import { saveItem } from 'src/store/actions/save-item';
+import gateway from 'test/mocks/gateway-mock.js';
+import Post from 'src/schema/Post';
 
-function Item({ description = '', name = '', hours = '' } = {}) {
-	return { description, name, hours };
-}
-
-const item = Item({
+const item = Post({
 	description: 'description',
 	name: 'name',
 	hours: 'hours'
 });
 
-const gateway = {
-	saveData: (itemToSave) => {
-		savedItems.push(itemToSave);
-		return savedItems;
-	}
-};
 const state = { itemToSave: item };
-let savedItems = [];
 let mockCommit = {};
 let mockDispatch = {};
 
@@ -29,40 +20,24 @@ function dispatch(called, payload) {
 	mockDispatch = { called, payload };
 }
 
-beforeEach(() => {
-	savedItems = [];
-});
-
 describe('save-item', () => {
 	test('save-item alerts if item description is missing', async () => {
 		const spy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-		saveItem({ item: Item({
-			description: undefined,
-			name: 'name',
-			hours: 'hours'
-		}) });
+		saveItem({ item: Post({ description: undefined }) });
 
 		expect(spy).toHaveBeenCalledWith('Please fill in the fields');
 	});
 
 	test('save-item alerts if item name is missing', async () => {
 		const spy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-		saveItem({ item: Item({
-			description: 'description',
-			name: undefined,
-			hours: 'hours'
-		}) });
+		saveItem({ item: Post({ name: undefined }) });
 
 		expect(spy).toHaveBeenCalledWith('Please fill in the fields');
 	});
 
 	test('save-item alerts if item hours is missing', async () => {
 		const spy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-		saveItem({ item: Item({
-			description: 'description',
-			name: 'name',
-			hours: undefined
-		}) });
+		saveItem({ item: Post({ hours: undefined }) });
 
 		expect(spy).toHaveBeenCalledWith('Please fill in the fields');
 	});
@@ -82,17 +57,6 @@ describe('save-item', () => {
 	});
 
 	test('save-item returns updated list of items', async () => {
-		saveItem({ commit, dispatch, state, gateway, item });
-
-		const newItem = Item({
-			description: 'newDescription',
-			name: 'newName',
-			hours: 'newHours'
-		});
-		state.itemToSave = newItem;
-
-		const result = saveItem({ commit, dispatch, state, gateway, item: newItem });
-
-		expect(result).toEqual([ item, newItem ]);
+		expect(saveItem({ commit, dispatch, state, gateway, item })).toEqual('itemsPlusSaved');
 	});
 });

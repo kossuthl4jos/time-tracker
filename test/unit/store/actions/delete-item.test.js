@@ -1,10 +1,8 @@
 import { deleteItem } from 'src/store/actions/delete-item';
+import gateway from 'test/mocks/gateway-mock.js';
+import Post from 'src/schema/Post';
 
-function Item({ id = '', description = '', name = '', hours = '' } = {}) {
-	return { id, description, name, hours };
-}
-
-const item = Item({
+const item = Post({
 	id: 'id',
 	description: 'description',
 	name: 'name',
@@ -12,21 +10,10 @@ const item = Item({
 });
 
 let mockDispatch = {};
-let savedItems = [ item ];
 
 function dispatch(called, payload) {
 	mockDispatch = { called, payload };
 }
-
-const gateway = {
-	deleteItem: (itemId) => {
-		return savedItems.filter(item => item.id != itemId);
-	}
-};
-
-beforeEach(() => {
-	savedItems = [ item ];
-});
 
 describe('delete-item', () => {
 	test('delete-item delegates properly', async () => {
@@ -39,8 +26,6 @@ describe('delete-item', () => {
 	});
 
 	test('delete-item returns list of updated items', async () => {
-		deleteItem({ dispatch, gateway, itemId: item.id });
-
-		expect(deleteItem({ dispatch, gateway, itemId: item.id })).toEqual([]);
+		expect(deleteItem({ dispatch, gateway, itemId: item.id })).toEqual('itemsLessDeleted');
 	});
 });
