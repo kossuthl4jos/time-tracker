@@ -30,7 +30,6 @@ function Store({ gateway = _gateway } = {}) {
 	const mutations = {
 		storePost(state, item) { storePost(state, item); },
 		displaySortedPosts(state, items) { displaySortedPosts(state, items); },
-
 	};
 
 	const actions = {
