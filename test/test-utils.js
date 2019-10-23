@@ -5,13 +5,8 @@ import Vuex from 'vuex';
 
 import i18n from '../src/vue-setup';
 
-export { find, findAll, click, input, enter, enterWithKeyDown };
-export {
-	findByHandle, findAllByHandle, clickByHandle,
-	inputByHandle, changeByHandle, pressEnterByHandle,
-	toggleByHandle, isCheckedByHandle, findBySelector, findAllBySelector,
-	nextTick, resolveAllPromises
-};
+export { find, findByHandle, findAll, findAllByHandle, findBySelector, findAllBySelector };
+export { inputByHandle, clickByHandle, mouseDownByHandle, nextTick, resolveAllPromises };
 
 export function mount(component, options) {
 	const localVue = createLocalVue();
@@ -55,22 +50,15 @@ function findAllBySelector(wrapper, selector) {
 	return wrapper.findAll(selector);
 }
 
-async function click(wrapper, ref) {
-	const node = find(wrapper, ref);
-	node.trigger('click');
-	return nextTick();
-}
-
 async function clickByHandle(wrapper, handle) {
 	const node = handle ? findByHandle(wrapper, handle) : wrapper;
 	node.trigger('click');
 	return nextTick();
 }
 
-async function input(wrapper, ref, text) {
-	const node = find(wrapper, ref);
-	node.element.value = text;
-	node.trigger('input');
+async function mouseDownByHandle(wrapper, handle) {
+	const node = handle ? findByHandle(wrapper, handle) : wrapper;
+	node.trigger('mousedown');
 	return nextTick();
 }
 
@@ -81,47 +69,6 @@ async function inputByHandle(wrapper, handle, text) {
 	return nextTick();
 }
 
-async function changeByHandle(wrapper, handle, text) {
-	const node = findByHandle(wrapper, handle);
-	node.element.value = text;
-	node.trigger('change');
-	return nextTick();
-}
-
-
-async function enter(wrapper, ref, text) {
-	await input(wrapper, ref, text);
-	const node = find(wrapper, ref);
-	node.trigger('keyup.enter');
-	return nextTick();
-}
-
-async function enterWithKeyDown(wrapper, ref, text) {
-	await input(wrapper, ref, text);
-	const node = find(wrapper, ref);
-	node.trigger('keydown.enter');
-	return nextTick();
-}
-
-async function pressEnterByHandle(wrapper, handle) {
-	const node = handle ? findByHandle(wrapper, handle) : wrapper;
-	node.trigger('keyup.enter');
-	return nextTick();
-}
-
-async function toggleByHandle(wrapper, handle) {
-	findByHandle(wrapper, handle).trigger('change');
-	return nextTick();
-}
-
-export function textByHandle(wrapper, handle) {
-	return findByHandle(wrapper, handle).element.value;
-}
-
-function isCheckedByHandle(wrapper, handle) {
-	return findByHandle(wrapper, handle).element.checked;
-}
-
 function nextTick() {
 	return Vue.nextTick();
 }
@@ -129,3 +76,20 @@ function nextTick() {
 function resolveAllPromises() {
 	return nextTick();
 }
+
+// async function changeByHandle(wrapper, handle, text) {
+// 	const node = findByHandle(wrapper, handle);
+// 	node.element.value = text;
+// 	node.trigger('change');
+// 	return nextTick();
+// }
+
+// async function enterByHandle(wrapper, handle) {
+// 	const node = handle ? findByHandle(wrapper, handle) : wrapper;
+// 	node.trigger('keyup.enter');
+// 	return nextTick();
+// }
+
+// function isCheckedByHandle(wrapper, handle) {
+// 	return findByHandle(wrapper, handle).element.checked;
+// }
