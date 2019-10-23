@@ -8,7 +8,8 @@ const item = Post({
 	hours: 'hours'
 });
 
-const state = { itemToSave: item };
+const state = {};
+
 let mockCommit = {};
 let mockDispatch = {};
 
