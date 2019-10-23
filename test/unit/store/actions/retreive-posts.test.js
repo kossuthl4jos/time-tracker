@@ -1,11 +1,6 @@
 import { retreivePosts } from 'src/store/actions/retreive-posts';
 import gateway from 'test/mocks/gateway-mock.js';
-
-let mockCommit = {};
-
-function commit(called, payload) {
-	mockCommit = { called, payload };
-}
+import { commit, mockCommit } from 'test/mocks/vuex-mock';
 
 describe('retreive-posts', () => {
 	test('retreive posts loads the posts', async () => {

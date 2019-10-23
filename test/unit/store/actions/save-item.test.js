@@ -1,5 +1,6 @@
 import { saveItem } from 'src/store/actions/save-item';
-import gateway from 'test/mocks/gateway-mock.js';
+import gateway from 'test/mocks/gateway-mock';
+import { commit, mockCommit, dispatch, mockDispatch } from 'test/mocks/vuex-mock';
 import Post from 'src/schema/Post';
 
 const item = Post({
@@ -9,17 +10,6 @@ const item = Post({
 });
 
 const state = {};
-
-let mockCommit = {};
-let mockDispatch = {};
-
-function commit(called, payload) {
-	mockCommit = { called, payload };
-}
-
-function dispatch(called, payload) {
-	mockDispatch = { called, payload };
-}
 
 describe('save-item', () => {
 	test('save-item alerts if item description is missing', async () => {

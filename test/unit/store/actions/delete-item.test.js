@@ -1,6 +1,8 @@
 import { deleteItem } from 'src/store/actions/delete-item';
 import gateway from 'test/mocks/gateway-mock.js';
 import Post from 'src/schema/Post';
+import { dispatch, mockDispatch } from 'test/mocks/vuex-mock';
+
 
 const item = Post({
 	id: 'id',
@@ -8,12 +10,6 @@ const item = Post({
 	name: 'name',
 	hours: 'hours'
 });
-
-let mockDispatch = {};
-
-function dispatch(called, payload) {
-	mockDispatch = { called, payload };
-}
 
 describe('delete-item', () => {
 	test('delete-item delegates properly', async () => {
