@@ -1,7 +1,15 @@
-import { Store } from 'src/store';
 import Post from 'src/schema/Post';
 import { mount, findByHandle, clickByHandle } from 'test/test-utils';
 import TheRecordedItems from 'src/components/the-recorded-items';
+import Vuex from 'vuex';
+
+let store;
+let wrapper;
+
+beforeEach(() => {
+	store = new Vuex.Store();
+	wrapper = mount(TheRecordedItems, { store });
+});
 
 const testItemsToDisplay = [ Post({
 	id: 'testId', 
@@ -12,39 +20,41 @@ const testItemsToDisplay = [ Post({
 })];
 
 describe('the-recorded-items.vue', () => {
+	test('sets the correct default data', () => {
+		const defaultData = TheRecordedItems.data();
+		expect(defaultData.isDeleting).toBe(false);
+		expect(defaultData.selectedItem).toEqual({});
+	});
+
 	test('does not show recorded item by default', async () => {
-		const store = Store();
-		const vm = mount(TheRecordedItems, { store });
-		expect(findByHandle(vm, 'item0').exists()).toBe(false);
+		expect(findByHandle(wrapper, 'item0').exists()).toBe(false);
 	});
 	
 	test('shows recorded item when there is one', async () => {
-		const store = Store();
 		store.state.listOfItemsToDisplay = testItemsToDisplay;
-		const vm = mount(TheRecordedItems, { store });
-		expect(findByHandle(vm, 'item0').exists()).toBe(true);
-		expect(findByHandle(vm, 'itemHeader0').text()).toBe('testName spent... 1 hour(s)');
-		expect(findByHandle(vm, 'itemDescription0').text()).toBe('testDescription');
+		const customWrapper = mount(TheRecordedItems, { store });
+
+		expect(findByHandle(customWrapper, 'item0').exists()).toBe(true);
+		expect(findByHandle(customWrapper, 'itemHeader0').text()).toBe('testName spent... 1 hour(s)');
+		expect(findByHandle(customWrapper, 'itemDescription0').text()).toBe('testDescription');
 	});
 
 	test('opens modal when delete button is clicked', async () => {
-		const store = Store();
 		store.state.listOfItemsToDisplay = testItemsToDisplay;
-		const vm = mount(TheRecordedItems, { store });
+		const customWrapper = mount(TheRecordedItems, { store });
 
-		clickByHandle(vm, 'deleteItemButton');
+		clickByHandle(customWrapper, 'deleteItemButton');
 
-		expect(findByHandle(vm, 'deleteModal').exists()).toBe(true);		
+		expect(findByHandle(customWrapper, 'deleteModal').exists()).toBe(true);		
 	});
 	
 	test('dismisses modal when deleting is cancelled', async () => {
-		const store = Store();
 		store.state.listOfItemsToDisplay = testItemsToDisplay;
-		const vm = mount(TheRecordedItems, { store });
+		const customWrapper = mount(TheRecordedItems, { store });
 
-		clickByHandle(vm, 'deleteItemButton');
-		clickByHandle(vm, 'rejectModalButton');
+		clickByHandle(customWrapper, 'deleteItemButton');
+		clickByHandle(customWrapper, 'rejectModalButton');
 
-		expect(findByHandle(vm, 'deleteModal').exists()).toBe(false);		
+		expect(findByHandle(customWrapper, 'deleteModal').exists()).toBe(false);		
 	});
 });

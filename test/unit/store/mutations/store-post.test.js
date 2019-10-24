@@ -3,10 +3,10 @@ import { storePost } from 'src/store/mutations/store-post';
 import Post from 'src/schema/Post';
 import validate from 'uuid-validate';
 
-describe('storePost', () => {
-	let itemToSave = {};
-	let state = { itemToSave };
+let itemToSave;
+let state;
 
+describe('storePost', () => {
 	const testPost = Post({
 		id: '',
 		description: 'testDescription',
@@ -21,7 +21,7 @@ describe('storePost', () => {
 	});
 
 	test('saves a valid UUID', async () => {
-		storePost(state, testPost);
+		storePost(state, Post());
 		const UUID = state.itemToSave.id;
 		const isValidUUID = validate(UUID, 4);
 		expect(isValidUUID).toEqual(true);
