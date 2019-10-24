@@ -1,12 +1,12 @@
-import { mount as vueMount, shallowMount as vueShallowMount, createLocalVue } from '@vue/test-utils';
+import { mount as vueMount, createLocalVue } from '@vue/test-utils';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 
 import i18n from '../src/vue-setup';
 
-export { find, findByHandle, findAll, findAllByHandle, findBySelector, findAllBySelector };
-export { inputByHandle, clickByHandle, mouseDownByHandle, nextTick, resolveAllPromises, focusByHandle, blurByHandle };
+export { findByHandle, findBySelector, focusByHandle, blurByHandle };
+export { inputByHandle, clickByHandle, mouseDownByHandle, nextTick };
 
 export function mount(component, options) {
 	const localVue = createLocalVue();
@@ -17,37 +17,21 @@ export function mount(component, options) {
 	return vueMount(component, Object.assign(options, { router, i18n }));
 }
 
-export function shallowMount(component, options) {
-	const localVue = createLocalVue();
-	localVue.use(VueRouter);
-	localVue.use(Vuex);
-	const router = new VueRouter();
+// export function shallowMount(component, options) {
+// 	const localVue = createLocalVue();
+// 	localVue.use(VueRouter);
+// 	localVue.use(Vuex);
+// 	const router = new VueRouter();
 
-	return vueShallowMount(component, Object.assign(options, { router, i18n }));
-}
-
-function find(wrapper, ref) {
-	return wrapper.find({ ref });
-}
+// 	return vueShallowMount(component, Object.assign(options, { router, i18n }));
+// }
 
 function findByHandle(wrapper, handle) {
 	return wrapper.find(`[handle="${handle}"]`);
 }
 
-function findAll(wrapper, ref) {
-	return wrapper.findAll({ ref });
-}
-
-function findAllByHandle(wrapper, handle) {
-	return wrapper.findAll(`[handle^="${handle}"]`);
-}
-
 function findBySelector(wrapper, selector) {
 	return wrapper.find(selector);
-}
-
-function findAllBySelector(wrapper, selector) {
-	return wrapper.findAll(selector);
 }
 
 async function clickByHandle(wrapper, handle) {
@@ -83,10 +67,6 @@ async function blurByHandle(wrapper, handle) {
 
 function nextTick() {
 	return Vue.nextTick();
-}
-
-function resolveAllPromises() {
-	return nextTick();
 }
 
 // async function changeByHandle(wrapper, handle, text) {
