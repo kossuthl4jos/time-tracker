@@ -6,7 +6,7 @@ import Vuex from 'vuex';
 import i18n from '../src/vue-setup';
 
 export { find, findByHandle, findAll, findAllByHandle, findBySelector, findAllBySelector };
-export { inputByHandle, clickByHandle, mouseDownByHandle, nextTick, resolveAllPromises };
+export { inputByHandle, clickByHandle, mouseDownByHandle, nextTick, resolveAllPromises, focusByHandle, blurByHandle };
 
 export function mount(component, options) {
 	const localVue = createLocalVue();
@@ -66,6 +66,18 @@ async function inputByHandle(wrapper, handle, text) {
 	const node = findByHandle(wrapper, handle);
 	node.element.value = text;
 	node.trigger('input');
+	return nextTick();
+}
+
+async function focusByHandle(wrapper, handle) {
+	const node = findByHandle(wrapper, handle);
+	node.trigger('focus');
+	return nextTick();
+}
+
+async function blurByHandle(wrapper, handle) {
+	const node = findByHandle(wrapper, handle);
+	node.trigger('blur');
 	return nextTick();
 }
 
