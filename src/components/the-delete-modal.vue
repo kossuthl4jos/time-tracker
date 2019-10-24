@@ -42,11 +42,6 @@ export default {
 			required: true
 		}
 	},
-	data() {
-		return {
-			isDeleting: false
-		};
-	},
 	methods: {
 		...mapActions(['deleteItem']),
 		cancelDeleteProcess() {
